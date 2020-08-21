@@ -1,0 +1,70 @@
+﻿<Page
+    x:Class="z_uwp.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:z_uwp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+
+    <Grid Margin="32,16,0,16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Button     Content="Placeholder I think tbh I dunno man 🤷‍" 
+                    Grid.Row="0" 
+                    HorizontalAlignment="Right"
+                    Margin="0, 8, 16, 8"
+                    Click="addMeeting"
+                    CornerRadius="4"/>
+        <GridView
+                x:Name="GridV"
+                ItemsSource="{x:Bind Items}"
+                IsItemClickEnabled="True"
+                CanDragItems="True"
+                AllowDrop="True"
+                CanReorderItems="True"
+                SelectionMode="Single"
+                FlowDirection="LeftToRight"
+                Grid.Row="1"
+                HorizontalAlignment="Center">
+            <GridView.ItemContainerStyle>
+                <Style TargetType="FrameworkElement">
+                    <Setter Property="Margin" Value="0 0 20 20"/>
+                </Style>
+            </GridView.ItemContainerStyle>
+            <GridView.ItemTemplate>
+                <DataTemplate x:Name="names" x:DataType="local:Meeting">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width ="275"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="112" />
+                            <RowDefinition Height="48"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="Primary" Margin="8"
+                            FontWeight="Bold" Text="{x:Bind name}"
+                            FontSize="24"
+                            Grid.Row="0"
+                            TextWrapping="WrapWholeWords"
+                            TextTrimming="CharacterEllipsis"/>
+                        <TextBlock x:Name="Desc" Margin="8"
+                            FontWeight="Light" Text="{x:Bind desc}"
+                            FontSize="12"
+                            Grid.Row="1"
+                            TextWrapping="WrapWholeWords"
+                            VerticalAlignment="Bottom"
+                            TextTrimming="CharacterEllipsis"/>                          
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </Grid>
+</Page>

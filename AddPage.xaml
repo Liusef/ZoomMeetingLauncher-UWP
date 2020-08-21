@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="z_uwp.AddPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:z_uwp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Margin="32,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="nom" Header="Enter the Meeting Name" PlaceholderText="Name" Grid.Row="0" Grid.Column="0" Margin="20"/>
+        <TextBox x:Name="descr" Header="Enter a Meeting Description (Optional)" PlaceholderText="Desc." Grid.Row="1" Grid.Column="0" Margin="20"/>
+        <TextBox x:Name="mcode" Header="Enter the Meeting Code" PlaceholderText="Meeting Code" Grid.Row="2" Grid.Column="0" Margin="20"/>
+        <TextBox x:Name="mpass" Header="Enter the Meeting Password (Optional)" PlaceholderText="Password" Grid.Row="3" Grid.Column="0" Margin="20"/>
+        <Button     Content="Add Meeting"
+                    Style="{StaticResource ButtonRevealStyle}"
+                    Margin="20"
+                    Grid.Row="4"
+                    Click="Button_Click"
+                    CornerRadius="4"/>
+    </Grid>
+</Page>
