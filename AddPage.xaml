@@ -21,16 +21,16 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <TextBox x:Name="nom" Header="Enter the Meeting Name" PlaceholderText="Name" 
-                 Grid.Row="0" Grid.Column="0" Margin="20" Style="{StaticResource ButtonRevealStyle}"
+                 Grid.Row="0" Grid.Column="0" Margin="20"
                  CornerRadius="4"/>
         <TextBox x:Name="descr" Header="Enter a Meeting Description (Optional)" PlaceholderText="Desc." 
-                 Grid.Row="1" Grid.Column="0" Margin="20" Style="{StaticResource ButtonRevealStyle}"
+                 Grid.Row="1" Grid.Column="0" Margin="20"
                  CornerRadius="4"/>
         <TextBox x:Name="mcode" Header="Enter the Meeting Code" PlaceholderText="Meeting Code" 
-                 Grid.Row="2" Grid.Column="0" Margin="20" Style="{StaticResource ButtonRevealStyle}"
+                 Grid.Row="2" Grid.Column="0" Margin="20"
                  CornerRadius="4"/>
         <TextBox x:Name="mpass" Header="Enter the Meeting Password (Optional)" PlaceholderText="Password" 
-                 Grid.Row="3" Grid.Column="0" Margin="20" Style="{StaticResource ButtonRevealStyle}"
+                 Grid.Row="3" Grid.Column="0" Margin="20"
                  CornerRadius="4"/>
         <Button     Content="Add Meeting"
                     Style="{StaticResource ButtonRevealStyle}"
