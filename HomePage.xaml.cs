@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
+using Windows.UI.Xaml.Media.Animation;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -45,6 +46,15 @@ namespace z_uwp
 			((App)App.Current).idfkman.Add(new Meeting("Bradley Fulk - APCS A", "AP Computer Science A", "Wot", "Wot"));
 			((App)App.Current).idfkman.Add(new Meeting("Test Meeting", "This meeting tile exists simply so that the description is long enough that it can demonstrate word wrapping and \nnew lines", "Wot", "Wot"));
 			((App)App.Current).idfkman.Add(new Meeting("Test Meeting but this time the name is quite long now isn't it?", "This meeting tile exists simply so that the description is long enough that it can demonstrate word wrapping and \nnew lines", "Wot", "Wot"));
+		}
+
+		private void GridV_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			((Window.Current.Content as Frame).Content as MainPage).navNoneSelected();
+			Meeting temp = e.ClickedItem as Meeting;
+			MPage.setParams(temp.name, temp.desc, temp.code, temp.pwd);
+			((Window.Current.Content as Frame).Content as MainPage).setHeader(temp.name);
+			MainPage.mainFrame.Navigate(typeof(MPage), null, new DrillInNavigationTransitionInfo());
 		}
 	}
 }

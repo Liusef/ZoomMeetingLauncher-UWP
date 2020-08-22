@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource SystemControlAcrylicWindowBrush}">
 
-    <Grid Margin="32,16,0,16">
+    <Grid Margin="32,16,0,16" x:Name="TLGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*" />
             <ColumnDefinition />
@@ -17,12 +17,6 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Button     Content="Placeholder I think tbh I dunno man 🤷‍" 
-                    Grid.Row="0" 
-                    HorizontalAlignment="Right"
-                    Margin="0, 8, 16, 8"
-                    Click="addMeeting"
-                    CornerRadius="4"/>
         <GridView
                 x:Name="GridV"
                 ItemsSource="{x:Bind Items}"
@@ -30,10 +24,11 @@
                 CanDragItems="True"
                 AllowDrop="True"
                 CanReorderItems="True"
-                SelectionMode="Single"
+                SelectionMode="None"
                 FlowDirection="LeftToRight"
                 Grid.Row="1"
-                HorizontalAlignment="Center">
+                HorizontalAlignment="Center"
+                ItemClick="GridV_ItemClick">
             <GridView.ItemContainerStyle>
                 <Style TargetType="FrameworkElement">
                     <Setter Property="Margin" Value="0 0 20 20"/>
@@ -41,7 +36,7 @@
             </GridView.ItemContainerStyle>
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="names" x:DataType="local:Meeting">
-                    <Grid>
+                    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width ="275"/>
                         </Grid.ColumnDefinitions>

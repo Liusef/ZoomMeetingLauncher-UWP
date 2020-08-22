@@ -6,10 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <Grid>
-        <ProgressRing HorizontalAlignment="Left" Margin="750,500,0,0" VerticalAlignment="Top"/>
-
-    </Grid>
+    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+    <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Height="1000" Text="Hi I basically don't exist oops" TextWrapping="Wrap" VerticalAlignment="Center" Width="1500" Padding ="32"/>
 </Page>

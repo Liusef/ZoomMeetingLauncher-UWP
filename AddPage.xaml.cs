@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -33,8 +34,8 @@ namespace z_uwp
 			if (!String.IsNullOrWhiteSpace(nom.Text) && !String.IsNullOrWhiteSpace(mcode.Text))
 			{
 				((App)App.Current).idfkman.Add(new Meeting(nom.Text, descr.Text, mcode.Text, mpass.Text));
-				MainPage.initheader = "Home";
-				((Window.Current.Content as Frame)).Navigate(typeof(MainPage));
+				MainPage.mainFrame.Navigate(typeof(HomePage), null, new DrillInNavigationTransitionInfo());
+				((Window.Current.Content as Frame).Content as MainPage).setHeader("Launcher");
 			}
 		}
 	}

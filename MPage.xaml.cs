@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -12,6 +14,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -29,8 +32,17 @@ namespace z_uwp
 		public static string code { get; set; }
 		public static string pass { get; set; }
 
+		public string nameInst;
+		public string descInst;
+		public string codeInst;
+		public string passInst;
+
 		public MPage()
 		{
+			nameInst = name;
+			descInst = desc;
+			codeInst = code;
+			passInst = pass;
 			this.InitializeComponent();
 		}
 
@@ -45,7 +57,8 @@ namespace z_uwp
 		public void launchMeeting()
 		{
 			Meeting temp = new Meeting(name, desc, code, pass);
-			System.Diagnostics.Process.Start(temp.url);
+			Console.WriteLine(temp.url);
+			Utils.OpenBrowser(temp.url);
 		}
 
 		public void delEntry()
@@ -60,6 +73,27 @@ namespace z_uwp
 					break;
 				}
 			}
+		}
+
+		private void Join_Click(object sender, RoutedEventArgs e)
+		{
+			launchMeeting();
+		}
+
+		private void Del_Click(object sender, RoutedEventArgs e)
+		{
+			delEntry();
+			MainPage.mainFrame.Navigate(typeof(HomePage), null, new DrillInNavigationTransitionInfo());
+			((Window.Current.Content as Frame).Content as MainPage).setHeader("Launcher");
+		}
+
+		private void Copy_Click(object sender, RoutedEventArgs e)
+		{
+			Meeting temp = new Meeting(name, desc, code, pass);
+			DataPackage dp = new DataPackage();
+			dp.RequestedOperation = DataPackageOperation.Copy;
+			dp.SetText(temp.url);
+			Clipboard.SetContent(dp);
 		}
 	}
 }

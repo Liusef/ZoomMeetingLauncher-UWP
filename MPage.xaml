@@ -10,17 +10,35 @@
 
     <Grid Margin="32">
         <Grid.RowDefinitions>
-            <RowDefinition Height="64"/>
-            <RowDefinition Height="64"/>
-            <RowDefinition Height="128"/>
+            <RowDefinition Height="42"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="72"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Placeholder" FontSize="24" Grid.Row="0" FontWeight="Medium" Margin="0,10"/>
+        <StackPanel Margin="0,10, 0, 0" Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="Meeting Code:" FontSize="24" FontWeight="Medium" />
+            <TextBlock Text="{x:Bind codeInst}" FontSize="24" FontWeight="Medium" Margin="20,0, 0, 0"/>
+        </StackPanel>
+        <StackPanel Margin="0,10, 0, 0" Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Text="Password:" FontSize="24" FontWeight="Medium" />
+            <TextBlock Text="{x:Bind passInst}" FontSize="24" FontWeight="Medium" Margin="20, 0, 0, 0"/>
+        </StackPanel>
         <!--https://igorpopov.io/2018/05/26/stringformat-in-xaml/#:~:text=There%20are%20however%20some%20other%20ways%20you%20can,helpful%20when%20you%20want%20to%20concatenate%20more%20things.-->
-        <TextBlock Text="Placeholder" FontSize="24" Grid.Row="1" Margin="0,10"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,10">
-            <Button Content="Join Meeting" Margin="0, 24, 24" CornerRadius="10"/>
-            <Button Content="Delete Entry" Margin="24" CornerRadius="10"/>
+        <TextBlock Text="{x:Bind descInst}" FontSize="16" Grid.Row="2" Margin="0,20,0,10" Width="512" HorizontalAlignment="Left" TextWrapping="WrapWholeWords" TextTrimming="CharacterEllipsis"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="0,10, 0, 0">
+            <Button Content="Join Meeting" CornerRadius="4" Click="Join_Click" Style="{StaticResource ButtonRevealStyle}"/>
+            <Button Content="Copy Link" Margin="24, 0, 0, 0" CornerRadius="4" Click="Copy_Click" Style="{StaticResource ButtonRevealStyle}"/>
+            <Button Content="Edit Entry" Margin="24, 0, 0, 0" CornerRadius="4" Style="{StaticResource ButtonRevealStyle}">
+                <Button.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <TextBlock Text="Not Implemented Yet Sorry :/" Margin="0,0,0,12" />
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Button Content="Delete Entry" Margin="24, 0, 0, 0" CornerRadius="4" Click="Del_Click" Style="{StaticResource ButtonRevealStyle}"/>
         </StackPanel>
     </Grid>
 </Page>

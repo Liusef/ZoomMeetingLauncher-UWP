@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using Windows.Storage;
@@ -22,7 +24,7 @@ namespace z_uwp
 		{
 			File.Create(path).Dispose();
 		}
-		
+
 		public static ObservableCollection<Meeting> readMtgs()
 		{
 			String json = "";
@@ -69,6 +71,11 @@ namespace z_uwp
 			File.WriteAllText(mtg, Encoding.UTF8.GetString(json_ba, 0, json_ba.Length));
 		}
 
+		public static async void OpenBrowser(string url)
+		{
+			// Launch the URI
+			var success = await Windows.System.Launcher.LaunchUriAsync(new Uri(url));
 
+		}
 	}
 }

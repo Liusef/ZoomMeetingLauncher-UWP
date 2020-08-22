@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -24,10 +25,12 @@ namespace z_uwp
     {
 
 		public static string initheader = "Welcome Back";
+		public static Frame mainFrame;
 
         public MainPage()
         {
             this.InitializeComponent();
+			mainFrame = contentFrame;
         }
 
 		private void nvLoaded(object sender, RoutedEventArgs e)
@@ -70,13 +73,13 @@ namespace z_uwp
 			switch (item.Tag)
 			{
 				case "Home":
-					contentFrame.Navigate(typeof(HomePage));
+					contentFrame.Navigate(typeof(HomePage), null, new DrillInNavigationTransitionInfo());
 					break;
 				case "Add":
-					contentFrame.Navigate(typeof(AddPage));
+					contentFrame.Navigate(typeof(AddPage), null, new DrillInNavigationTransitionInfo());
 					break;
 				case "Info":
-					contentFrame.Navigate(typeof(InfoPage));
+					contentFrame.Navigate(typeof(InfoPage), null, new DrillInNavigationTransitionInfo());
 					break;
 				default:
 					break;
@@ -88,6 +91,11 @@ namespace z_uwp
 		public  void setHeader(string s)
 		{
 			NavView.Header = s;
+		}
+
+		public void navNoneSelected()
+		{
+			NavView.SelectedItem = null;
 		}
 	}
 }
